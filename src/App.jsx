@@ -2,6 +2,7 @@ import React from "react";
 import { Link, Routes, Route } from "react-router-dom";
 import Home from "./Components/Home";
 import Show from "./Components/Show";
+import Services from "./Components/Services";
 
 const App = () => {
   return (
@@ -23,6 +24,12 @@ const App = () => {
             >
               Show
             </Link>
+            <Link
+              to="/services"
+              className="text-lg font-medium hover:text-blue-200 transition"
+            >
+              Services
+            </Link>
           </nav>
         </div>
       </header>
@@ -32,6 +39,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/show" element={<Show />} />
+          <Route path="/services" element={<Services />} />
         </Routes>
       </main>
 

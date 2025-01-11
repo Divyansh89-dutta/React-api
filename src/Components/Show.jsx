@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from "react";
+import axios from "../utils/axios"; // Import axios instance
 
 function Show() {
   const [products, setProducts] = useState([]); // State to manage product list
@@ -21,9 +21,8 @@ function Show() {
 
   // Function to fetch a single product
   const getSingleProduct = () => {
-    const api = "https://fakestoreapi.com/products/1";
     axios
-      .get(api)
+      .get('/products/1') // API endpoint for a single product
       .then((res) => {
         console.log("Single Product fetched:", res.data);
         setSingleProduct(res.data); // Update state with the fetched product
@@ -32,6 +31,11 @@ function Show() {
         console.error("Error fetching product:", err);
       });
   };
+
+  // useEffect to fetch the products when the component mounts
+  useEffect(() => {
+    getProducts();
+  }, []); // Empty dependency array ensures this runs only once on mount
 
   return (
     <div className="p-5">
